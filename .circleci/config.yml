@@ -23,24 +23,21 @@ jobs:
       - run:
           name: install dependencies
           command: npm install
+      - save_modules
+  test:
+    executor: node
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: install dependencies
+          command: npm install
       - run:
           name: unit test
           command: npm test
-      - save_modules
-  # test:
-  #   executor: node
-  #   steps:
-  #     - checkout
-  #     - restore_modules
-  #     - run:
-  #         name: install dependencies
-  #         command: npm install
-  #     - run:
-  #         name: unit test
-  #         command: npm test
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      # - test
+      - test
