@@ -16,7 +16,7 @@ commands:
             - ./node_modules
 jobs:
   build:
-    executor: node
+    executor: no
     steps:
       - checkout
       - restore_modules
